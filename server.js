@@ -9,6 +9,10 @@ const app = express();
 app.use(cors()); 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('API do Buscador de Filmes rodando com sucesso!');
+});
+
 app.get('/api/movies', async (req, res) => {
 
     const query = req.query.search;
