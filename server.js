@@ -3,11 +3,16 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-
+const path = require('path');
 const app = express();
 
+app.use(express.static(__dirname));
 app.use(cors()); 
 app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.get('/', (req, res) => {
     res.send('API do Buscador de Filmes rodando com sucesso!');
