@@ -18,7 +18,9 @@
     <div class="movies-grid" id="moviesContainer"></div>
 
     <script>
+        
         async function buscarFilmes() {
+            const resposta = await fetch(`https://seu-projeto.vercel.app/api/movies?search=${encodeURIComponent(termoBusca)}`);
             const input = document.getElementById('searchInput');
             const container = document.getElementById('moviesContainer');
             const termoBusca = input.value.trim();
@@ -32,7 +34,7 @@
 
             try {
                 
-                const resposta = await fetch(`http://localhost:3000/api/movies?search=${encodeURIComponent(termoBusca)}`);
+                const resposta = await fetch(`https://seu-projeto.vercel.app/api/movies?search=${encodeURIComponent(termoBusca)}`);
                 const filmes = await resposta.json();
 
                 container.innerHTML = '';
